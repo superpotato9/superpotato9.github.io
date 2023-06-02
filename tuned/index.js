@@ -51,7 +51,7 @@ let Token;
         const params = new URLSearchParams();
         params.append("client_id", clientId);
         params.append("response_type", "code");
-        params.append("redirect_uri", "https://superpotato9.com/tuned/");
+        params.append("redirect_uri", "http://localhost:63341/tuned/");
         params.append("scope", "user-top-read");
         params.append("code_challenge_method", "S256");
         params.append("code_challenge", challenge);
@@ -86,7 +86,7 @@ let Token;
         params.append("client_id", clientId);
         params.append("grant_type", "authorization_code");
         params.append("code", code);
-        params.append("redirect_uri", "https://superpotato9.com/tuned/");
+        params.append("redirect_uri", "http://localhost:63341/tuned/");
         params.append("code_verifier", verifier);
 
         const result = await fetch("https://accounts.spotify.com/api/token", {
@@ -130,22 +130,26 @@ console.log(params.values())
             names.push(profile["items"][i]["name"])
             images.push(profile["items"][i]["album"]["images"][0]["url"])
             artist_names.push(profile["items"][i]["album"]["artists"][0]["name"])
-            artist_urls.push(profile["items"][i]["album"]["external_urls"]["spotify"])
+            artist_urls.push(profile["items"][i]["artists"][0]["external_urls"]["spotify"])
 
         }
-
+        let new_artist_urls;
+        let new_artist_names;
         if (remove_duplicates_safe(images).length >= 9) {
             images = remove_duplicates_safe(images)
-            artist_urls = remove_duplicates_safe(artist_urls)
-            artist_names = remove_duplicates_safe(artist_names)
+            new_artist_urls = remove_duplicates_safe(artist_urls)
+            new_artist_names = remove_duplicates_safe(artist_names)
         }
+
 console.log(images)
         let credit_html = ''
-
-        for(let i = 0; i !== 8; i++){
+        let credit_length = 0;
+        credit_length = artist_names.length - new_artist_names.length;
+        console.log(credit_length)
+        for(let i = 0; i !== credit_length; i++){
             console.log(artist_names[i]);
-            if(artist_names != undefined){
-           credit_html += ' <a href="' + artist_urls[i] + '">' + artist_names[i]+ '</a>, '
+            if(new_artist_names[i] != undefined){
+           credit_html += ' <a href="' + new_artist_urls[i] + '">' + new_artist_names[i]+ '</a>, '
         }}
         document.getElementById("credit").innerHTML = 'credit:' + credit_html
 
