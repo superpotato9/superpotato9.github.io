@@ -143,8 +143,8 @@ console.log(params.values())
 
 console.log(images)
         let credit_html = ''
-        let credit_length = 0;
-        credit_length = artist_names.length - new_artist_names.length;
+        let credit_length = 7;
+//         credit_length = artist_names.length - new_artist_names.length;
         console.log(credit_length)
         for(let i = 0; i !== credit_length; i++){
             console.log(artist_names[i]);
