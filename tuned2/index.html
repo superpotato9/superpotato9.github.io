@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tuned for Spotify</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
+    <script src="index.js" type="module"></script>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+<div id="wrapper">
+<header>
+<h1 id="title" >Tuned</h1>
+    <a href="https://spotify.com" > <img  id="spotify" src="Spotify_Icon_RGB_Green.png" ></a>
+
+</header>
+    <div id="image">
+        <p id="description" >Create album collages of your top tracks</p>
+<img  src="" id="generated_image"></img>
+        <p id="credit" ></p>
+    </div>
+    <canvas width="1080" height="1080" id="canvas"></canvas>
+    <div id="options">
+<button id="login_button" onclick="">Login</button>
+
+
+
+<div id="range-select">
+    <label id="range-label" for="range">range</label>
+
+    <select name="range" id="range" onclick="">
+        <option value="short_term">last week</option>
+        <option value="medium_term">last few months</option>
+        <option value="long_term">lifetime</option>
+
+    </select>
+
+</div>
+
+    </div>
+<footer>
+    <p>made by: <a href="https://www.nathank.page/" >Nathan</a></p>
+    <p><a href="https://www.buymeacoffee.com/nkoliha" >buy me a coffee</a></p>
+    <p><a href="https://superpotato9.github.io/tuned/privacy.html">Privacy policy</a></p>
+
+</footer>
+</div>
+</body>
+</html>
