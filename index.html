@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io-2/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io-2/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io-2/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>Hear the Ocean</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+<body>
+
+    <div id="container">
+<div id="Title">
+<h1 class="titletext">The Sounds of the Ocean</h1>
+    <h3 class="subheading">Created by Nathan Koliha</h3>
+<p class="subsubheading"> Press any of the sounds below to add it to the ocean soundscape.</p>
+    <audio id="sound1" src="/Sounds/Quiet%20Ocean%20cleaned%20.wav" preload="auto"></audio>
+    <div class="buttonsingletop">
+    <button class="oceanbutton" onclick="document.getElementById('sound1').play();">Ocean Background</button>
+</div>
+</div>
+
+<div id="buttons1">
+    <audio id="sound3" src="/Sounds/Atlantic%20spotted%20Dolphin%20cleaned.wav" preload="auto"></audio>
+    <audio id="sound4" src="/Sounds/Beluga%20Whale%20cleaned.wav" preload="auto"></audio>
+    <audio id="sound5" src="/Sounds/Killer%20whale%20cleaned.wav" preload="auto"></audio>
+    <audio id="sound10" src="/Sounds/Bearded%20Seal%20Cleaned.wav" preload="auto"></audio>
+    <button class="normal_button" onclick="document.getElementById('sound3').play();">Spotted Dolphin</button>
+    <button class="normal_button" onclick="document.getElementById('sound4').play();">Beluga Whale</button>
+    <button class="normal_button" onclick="document.getElementById('sound5').play();">Killer Whale</button>
+    <button class="normal_button" onclick="document.getElementById('sound10').play();">Bearded Seal</button>
+</div>
+<div id="buttons2">
+    <audio id="sound6" src="/Sounds/Ice%20singing%20cleaned.wav" preload="auto"></audio>
+    <audio id="sound7" src="/Sounds/large%20vessel%20cleaned%20.wav" preload="auto"></audio>
+    <audio id="sound8" src="/Sounds/Seizmic%20drilling%20cleaned%20.wav" preload="auto"></audio>
+    <audio id="sound9" src="/Sounds/small%20vessel%20cleaned.wav" preload="auto"></audio>
+    <button class="normal_button" onclick="document.getElementById('sound6').play();">Ice Singing</button>
+    <button class="normal_button" onclick="document.getElementById('sound7').play();">Large Vessel</button>
+    <button class="normal_button" onclick="document.getElementById('sound8').play();">Deepwater Drilling</button>
+    <button class="normal_button" onclick="document.getElementById('sound9').play();">Small Vessel</button>
+
+</div>
+        <div class="buttonsinglebottom">
+<button class="oceanbutton" onclick="mutePage()">Stop Sounds</button>
+        </div>
+
+
+<div id="fulllowerarea">
+    <h1 style="text-align: center; margin-bottom: 6vw;">Man Made Noise and the Ocean</h1>
+    <div id="image_text_container">
+    <div id="image_container">
+    <img class="whale" src="Whale.jpg" alt="ocean" >
+
+    </div>
+
+    <div id="text_container">
+    <p class="writeup">Imagine having a conversation when suddenly a steam roller pushes by disorienting and confusing you. for many this would be a very strange experience but for many marine animals this is a common experience. Man-made noise pollution in the ocean and other bodies of water can be extremely harmful to animals, it can lead to hearing loss, Disrupted breeding/communication, and disorientation. a lot of activities cause ocean noise (that is any sound that we don’t want in the ocean) but the main sources are commercial ship travel and deep sea drilling. ocean noise is growing alarmingly too, just in the past six years the average volume of the ocean has doubled.
+    </p>
+
+       <h3> How can we help?</h3>
+<p class="writeup">
+        There aren’t many we ways can directly reduce our impact but, by pushing for social change we can help with the creation of more designated quiet zones and thresholds for sound levels in certain areas.
+
+
+
+        Creating for Oceanography at Redmond High School  </p>
+    </div>
+
+    </div>
+
+</div>
+
+</div>
+    <div id="bottom-buttons">
+        <button id="help-button-citations"  class="help-button" style="margin-right: 2vw;" onclick="openPopup('Citations', 'NOAA [National Oceanic and Atmospheric Administration].\n Passive Acoustics Group. 2021.  \n Stfr_Multisound_NOAA_PAGroup_01.\n   https://www.fisheries.noaa.gov/national/science-data/sounds-ocean\n'+
+'\n'+
+'\n'+
+'NOAA [National Oceanic and Atmospheric Administration]. Passive Acoustics Group. 2021.  Stfr_Multisound_NOAA_PAGroup_01.  https://www.fisheries.noaa.gov/national/science-data/sounds-ocean')">Citations</button>
+        <button id="help-button-learn-more" class="help-button" onclick="openPopup('Learn More', 'You can Learn more about our oceans and acoustic oceananic research at: https://www.fisheries.noaa.gov/new-england-mid-atlantic/endangered-species-conservation/passive-acoustic-research-northeast')"> Learn more</button>
+    </div>
+    <div id="particles-js"></div>
+
+
+
+
+
+
+    <div class="popup-overlay" id="popupOverlay">
+
+        <div class="popup" id="popup">
+
+            <span class="close" id="closePopup">&times;</span>
+
+            <div class="popup-content">
+
+                <p id="popuptitle">Title </p>
+
+                <p id="popupcontent">content</p>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+
+
+
+
+</body>
+<script type="text/javascript" >
+    // Mute a singular HTML5 element
+    function muteMe(elem) {
+
+        elem.pause();
+    }
+
+    // Try to mute all video and audio elements on the page
+    function mutePage() {
+        document.querySelectorAll("video, audio").forEach((elem) => muteMe(elem));
+    }
+    particlesJS.load('particles-js', 'particles-config.json', function() {
+        console.log('particles.js loaded - callback');
+    });
+</script>
+</html>
+
