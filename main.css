@@ -1,12 +1,12 @@
 
 .roboto-fonter {
-             font-family: "Roboto", serif;
-             font-optical-sizing: auto;
-             font-weight:200;
-             font-style: normal;
-             font-variation-settings:
-                     "wdth" 100;
-         }
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight:200;
+    font-style: normal;
+    font-variation-settings:
+            "wdth" 100;
+}
 
 body{
     font-family: roboto-fonter, Roboto;
@@ -15,7 +15,7 @@ body{
 #image_text_container{
     #text-align: center;
     display: flex;
-font-size: 1.2em;
+    font-size: 1.2em;
     flex-direction: row;
     #justify-content: space-between;
     margin: auto;
@@ -49,9 +49,9 @@ font-size: 1.2em;
 }
 #Title{ margin: auto;
 
-     max-width: max-content;
+    max-width: max-content;
     color: #f1ead6;
-padding-bottom: 3ch;}
+    padding-bottom: 3ch;}
 
 .normal_button{
     border: solid;
@@ -75,7 +75,7 @@ padding-bottom: 3ch;}
 
     background-color:  #f2cf41;
     color: #000000;
-border:solid;
+    border:solid;
     border-width:0.1ch;
     border-color: #000000;
     padding: 0px 32px;
@@ -115,9 +115,9 @@ border:solid;
 body
 {
     z-index: 1;
-    }
+}
 .writeup{
-    max-width:25vw;
+    max-width:45vw;
 }
 #fulllowerarea{
     color: white;
@@ -126,11 +126,14 @@ body
 }
 #text_container{
     margin-right: 10vw;
+    #text-align: center;
+    font-size: 1.2em;
 }
 .whale{
- margin-left: 14ch;
-    max-width: 70%;
-    max-height: 70%;
+    margin-left: 5ch;
+    max-width: 85%;
+    max-height: 85%;
+    float: left;
 }
 #button-container{
     align-items: center;
@@ -252,6 +255,11 @@ body
 }
 
 
+@media (max-width: 992px) {
+    #text_container {
+        font-size: 1em  !important;
+    }
+}
 
 
 
