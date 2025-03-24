@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>USA in Foreign Affairs</title>
+    <title>Title</title>
     <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-venn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,9 +13,9 @@
 
 <body>
 <div id="header">
-    <h1>The United States in Foreign Affairs</h1>
+    <h1 class="title">The United States in Foreign affairs</h1>
     <h2 class="subheading">By: Nathan Koliha And Danny Rosemond </h2>
-
+    <br>
 </div>
 <div id="content">
     <label for="compare-select1">Choose 3 Categories</label>
@@ -166,7 +166,12 @@
                         { Country: "Kuwait", categories: ["A", "B", "D"] },
                         { Country: "Japan", categories: ["A", "B"] },
                     { Country: "Chile", categories: ["E", "B"] },
-                    { Country: "Cuba", categories: ["B", "E"] }
+                    { Country: "Cuba", categories: ["B", "E"] },
+                    { Country: "Brazil", categories: ["B", "E"] },
+                    { Country: "Germany", categories: [ "B", 'C', 'D'] },
+
+
+
 
 
 
@@ -179,6 +184,7 @@
                     C: "Peace keeping",
                     D: "Withdrawal",
                     E: "Covert Operations"
+
                 };
                 let selectedCategories = ['A', 'B', 'C', 'D'];
                 let vennData = generateVennData(all_countries, categoryLabels, selectedCategories);
@@ -222,9 +228,12 @@
                     selectedCategories = [Value1, Value2, Value3];
                     console.log(selectedCategories);
                     if (selectedCategories.includes("") ){
+                        document.getElementById("compare").style.cursor = "not-allowed";
                         return 1;
+
                     }
                     else {
+                        document.getElementById("compare").style.cursor = "";
                         console.log(selectedCategories);
                         chart.dispose()
                         vennData = generateVennData(all_countries, categoryLabels, selectedCategories);
@@ -300,8 +309,7 @@
     <div id="Writeup">
     <h3 class="writeup-title ">The Role of the United States in Foreign Affairs</h3>
         <div class="text">
-    <p>Whether the US should involve is largely dependent on the situation at hand. For the most part, it is preferable for the US to stay uninvolved in order to keep the US safe. However, when the safety of the US is directly threatened, the US should act. Humanitarian aid is a harder situation to imagine as it is beneficial to the world if the US gives aid to countries who need it, even if they don’t necessarily need to be involved. At the end of the day, there is no clear answer on how involved the US should be as each situation has its own nuances and differs entirely. </p>
-        </div>
+            <p>Whether the US should be involved is largely dependent on the situation at hand. For the most part, it is preferable for the US to stay uninvolved in order to keep the US safe. However, when the safety of the US is directly threatened, the US should act. Humanitarian aid is a harder situation to imagine as it is beneficial to the world if the US gives aid to countries who need it, even if they don’t necessarily need to be involved. The Venn Diagrams also show clear trends in how the United States tends to interact with other countries, particularly you can notice a trend in peacekeeping aid in which this is often coupled with some form of covert or military influence this matches up with the real work context (such as Tibet). as you look through the data Pairings of different types of influence seem to be common. However, at the end of the day, there is no clear answer on how involved the US should be as each situation has its own nuances and should be treated with care. </p> </div>
         <div class="image">
 
         </div>
@@ -310,7 +318,7 @@
 
 <div id="bottom-buttons">
     <button id="Sources"  class="help-button" style="margin-right: 2vw;" onclick="location.href='sources.html'">
-        Sources
+        Summary's
     </button>
     <button id="help-button-learn-more" class="help-button" onclick="openPopup('Learn More', 'You can Learn more about the the USA in global affairs at: https://foreignassistance.gov/' )"> Learn more</button>
 </div>
