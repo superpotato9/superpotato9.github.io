@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-venn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+<div id="header">
+    <h1>The United States in Foreign affairs</h1>
+    <h2 class="subheading">By: Nathan Koliha And Danny Rosemond </h2>
+
+</div>
+<div id="content">
+    <label for="compare-select1">Choose 3 Categories</label>
+
+    <select name="chart options 1" id="compare-select1">
+        <option value="">choose an option</option>
+        <option value="A">Military</option>
+        <option value="B">Humanity</option>
+        <option value="C">Peacekeeping</option>
+        <option value="D">US Withdrawl</option>
+        <option value="E">Covert Operations</option>
+
+
+    </select>
+    <label for="compare-select2"></label>
+
+    <select name="chart options 2" id="compare-select2">
+        <option value="">choose an option</option>
+        <option value="A">Military</option>
+        <option value="B">Humanity</option>
+        <option value="C">Peacekeeping</option>
+        <option value="D">US Withdrawl</option>
+        <option value="E">Covert Operations</option>
+
+    </select>
+    <label for="compare-select3"></label>
+
+    <select name="chart options 3" id="compare-select3">
+        <option value="">choose an option</option>
+        <option value="A">Military</option>
+        <option value="B">Humanity</option>
+        <option value="C">Peacekeeping</option>
+        <option value="D">US Withdrawl</option>
+        <option value="E">Covert Operations</option>
+
+    </select>
+<button id="compare" > Compare</button>
+<div id="chart">
+        <div id="container" style="width: 100%; height: 200% ; height: 50vw ; margin: 0 auto;">
+
+        </div>
+        <script>
+
+            anychart.onDocumentReady(function() {
+
+                // adding data
+                /*
+                 A Was there a war?
+                B Humanitaran aid?
+                 C Still actively involved?
+                 D US withdrawal?
+                 */
+                function generateVennData(all_countries, categoryLabels, selectedCategories) {
+                    selectedCategories = selectedCategories || [];
+                    let countryCategoryMap = {};
+
+                    all_countries.forEach(country => {
+                        let countryCategories = new Set(country.categories);
+                        selectedCategories.forEach(cat => {
+                            if (countryCategories.has(cat)) {
+                                if (!countryCategoryMap[country.Country]) {
+                                    countryCategoryMap[country.Country] = new Set();
+                                }
+                                countryCategoryMap[country.Country].add(cat);
+                            }
+                        });
+                    });
+
+                    let vennData = [];
+
+                    function getCategoryCombinationKey(categoriesSet) {
+                        return Array.from(categoriesSet).sort().join(',');
+                    }
+
+                    function getNameForCombination(categoriesSet) {
+                        let countryNames = [];
+                        Object.entries(countryCategoryMap).forEach(([country, categories]) => {
+                            if (categoriesSet.size === categories.size && [...categoriesSet].every(cat => categories.has(cat))) {
+                                countryNames.push(country);
+                            }
+                        });
+
+                        // Show category labels only for single categories (no intersections)
+                        if (categoriesSet.size === 1) {
+                            let categoryNames = [...categoriesSet].map(cat => `${categoryLabels[cat]}:`);
+                            return [...categoryNames, "\n\n", ...countryNames].join(" \n \n");
+                        }
+
+                        return countryNames.join(", \n");
+                    }
+
+                    function getValueForCombination(categoriesSet) {
+                        const numCategories = categoriesSet.size;
+                        if (numCategories === 1) {
+                            return 100;  // Ensure single categories are clearly visible
+                        } else if (numCategories === 2) {
+                            return 40;
+                        } else if (numCategories === 3) {
+                            return 20;
+                        } else {
+                            return 5;
+                        }
+                    }
+
+                    function generateCombinations(arr) {
+                        let results = [];
+                        let f = function(prefix, arr) {
+                            for (let i = 0; i < arr.length; i++) {
+                                results.push(prefix.concat(arr[i]));
+                                f(prefix.concat(arr[i]), arr.slice(i + 1));
+                            }
+                        };
+                        f([], arr);
+                        return results;
+                    }
+
+                    let categoryCombinations = generateCombinations(selectedCategories);
+
+
+                    categoryCombinations.forEach(combination => {
+                        let combinationKey = getCategoryCombinationKey(new Set(combination));
+                        let countryNamesForCombination = getNameForCombination(new Set(combination));
+                        let valueForCombination = getValueForCombination(new Set(combination));
+
+                        vennData.push({
+                            x: combination,
+                            value: valueForCombination,
+                            name: countryNamesForCombination
+
+
+                        });
+                    });
+
+                    return vennData;
+                }
+
+// Example Usage:
+                let all_countries = [
+                    {Country: "South Korea", categories: ['B', 'D'] },
+                    {Country: "Middle East", categories: ['A', 'C', 'D'] },
+                    {Country: "Vietnam", categories: ['A', 'D', 'E'] },
+                    {Country: "Central America", categories: ['A', 'D', 'E'] },
+                    {Country: "Libya", categories: ['A','B', 'E'] },
+                    {Country: "Somalia", categories: ['B', 'D'] },
+                    {Country: "Guatemala", categories: ['A'] },
+                    {Country: "Tibet", categories: [ 'B', 'D', 'E'] },
+                        { Country: "Mexico", categories: ["A", "B"] },
+                        { Country: "Kuwait", categories: ["A", "B", "D"] },
+                        { Country: "Japan", categories: ["A", "B"] },
+                    { Country: "Chile", categories: ["E", "B"] },
+                    { Country: "Cuba", categories: ["B", "E"] }
+
+
+
+
+                ];
+
+                const categoryLabels = {
+                    A: "Military",
+                    B: "Humanity",
+                    C: "Peace keeping",
+                    D: "Withdrawal",
+                    E: "Covert Operations"
+                };
+                let selectedCategories = ['A', 'B', 'C', 'D'];
+                let vennData = generateVennData(all_countries, categoryLabels, selectedCategories);
+                console.log(vennData);
+                // creating a venn diagram with the data
+                let chart = anychart.venn(vennData);
+                // setting the labels
+                chart.labels().format("{%Name}").fontSize('1vw').padding(10)
+
+
+
+                // setting the chart title
+                chart.title("Comparison of United States Involvement in Foreign Affairs");
+
+
+                chart.tooltip().format("");
+                chart.tooltip().separator(false);
+                // setting the container id
+                chart.container("container");
+                chart.legend(false);
+                chart.background().fill("#e5e3e2");
+                chart.tooltip().enabled(false);
+                chart.labels().useHtml(true);
+
+// Set label color using inline HTML
+                chart.labels().format(function() {
+                    return `<span style="color: #3b3b3b;">${this.name}</span>`;
+                });
+                chart.labels().format(function() {
+                    return `<span style="color: #3b3b3b; white-space: pre-wrap; word-break: break-word; display: block; text-align: center; font-size: 1vw;">${this.name}</span>`;
+                });
+                // drawing the diagram
+
+                chart.draw();
+                const button = document.getElementById('compare');
+                button.addEventListener("click", generateFinalSet);
+                function generateFinalSet() {
+                    Value1 =  document.getElementById("compare-select1").value;
+                    Value2 =  document.getElementById("compare-select2").value;
+                    Value3 =  document.getElementById("compare-select3").value;
+                    selectedCategories = [Value1, Value2, Value3];
+                    console.log(selectedCategories);
+                    if (selectedCategories.includes("") ){
+                        return 1;
+                    }
+                    else {
+                        console.log(selectedCategories);
+                        chart.dispose()
+                        vennData = generateVennData(all_countries, categoryLabels, selectedCategories);
+                        console.log(vennData);
+                        // creating a venn diagram with the data
+                        chart = anychart.venn(vennData);
+                        // setting the labels
+                        chart.labels().format("{%Name}").fontSize('1vw').padding(10)
+
+
+
+                        // setting the chart title
+                        chart.title("Comparison of United States Involvement in Foreign Affairs");
+
+
+                        chart.tooltip().format("");
+                        chart.tooltip().separator(false);
+
+                        // setting the container id
+                        chart.container("container");
+                        chart.legend(false);
+                        chart.background().fill("#e5e3e2");
+                        chart.tooltip().enabled(false);
+                        chart.labels().useHtml(true);
+                        chart.labels().format(function() {
+                            let text = this.name;
+                            let itemCount = text.split("\n").length; // Count lines (items)
+
+                            // Dynamically adjust font size based on item count
+                            let fontSize;
+                            if (itemCount < 5) {
+                                fontSize = "1vw";
+                            } else if (itemCount < 10) {
+                                fontSize = "0.6vw";
+                            }
+
+                            return `<div style="
+        color: #3b3b3b;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        font-size: 1vw;
+        width: 90%; /* Ensures it doesn't overflow the section */
+        margin: auto;
+        line-height: 1.2;
+        ">${text}</div>`;
+                        });
+
+
+
+// Set label color using inline HTML
+
+
+                        chart.draw();
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+            });
+        </script>
+
+</div>
+
+    <div id="Writeup">
+    <h3 class="writeup-title ">The Role of the United States in Foreign Affairs</h3>
+        <div class="text">
+    <p>Whether the US should involve is largely dependent on the situation at hand. For the most part, it is preferable for the US to stay uninvolved in order to keep the US safe. However, when the safety of the US is directly threatened, the US should act. Humanitarian aid is a harder situation to imagine as it is beneficial to the world if the US gives aid to countries who need it, even if they don’t necessarily need to be involved. At the end of the day, there is no clear answer on how involved the US should be as each situation has its own nuances and differs entirely. </p>
+        </div>
+        <div class="image">
+
+        </div>
+    </div>
+    </div>
+
+<div id="bottom-buttons">
+    <button id="Sources"  class="help-button" style="margin-right: 2vw;" onclick="location.href='sources.html'">
+        Sources
+    </button>
+    <button id="help-button-learn-more" class="help-button" onclick="openPopup('Learn More', 'You can Learn more about the the USA in global affairs at: https://foreignassistance.gov/' )"> Learn more</button>
+</div>
+<div id="particles-js"></div>
+
+
+
+
+
+
+<div class="popup-overlay" id="popupOverlay">
+
+    <div class="popup" id="popup">
+
+        <span class="close" id="closePopup">&times;</span>
+
+        <div class="popup-content">
+
+            <p id="popuptitle">Title </p>
+
+            <p id="popupcontent">content</p>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</div>
+</body>
+</html>
