@@ -4,8 +4,20 @@ body{
     overflow-x: hidden;
     position: relative;
 
-}
 
+}
+@font-face {
+    font-family: Domyouji;
+    src: url("Domyouji.ttf") format("truetype");
+
+}
+@font-face {
+
+
+    font-family: Advert MF;
+    src: url("Advert MF.ttf") format("truetype");
+    font-weight: 1 1000;
+}
 
 @keyframes fadeInUp{
     0% {
@@ -56,22 +68,24 @@ padding-bottom: -10px;
     font-size: 10vw;
 
     color: white;
-    font-family: Advert MF;
-    src: url("Advert MF.ttf") format("truetype");
+   font-family: Advert MF;
 
 }
+
 
 #text{
     display: flex;
     font-size: 3.2vw;
     padding-left: 3vw;
 
+    height:68vh;
     color: white;
     font-family: Domyouji;
-    src: url("Domyouji.ttf") format("truetype");
+
 
 
 }
+
 #flex-R{
     padding-left: 10vw;
     padding-top: 7%;
