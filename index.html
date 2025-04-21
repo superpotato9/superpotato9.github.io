@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
+
     <link rel="stylesheet" href="index.css">
     <script src="index.js"></script>
     <meta charset="UTF-8">
@@ -29,5 +31,15 @@
 
 </div>
 <div class="paperOverlay"></div>
+<script>
+    function setVh() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    window.addEventListener('resize', setVh);
+    window.addEventListener('load', setVh); // important on mobile!
+    setVh();
+</script>
 </body>
 </html>
