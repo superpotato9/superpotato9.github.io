@@ -86,4 +86,4 @@ function audio_player(count, src) {
         ).padStart(2, 0)}`;
     }
 }
-audio_player('', "audio/PreludetoaKiss.wav")
+audio_player('', "PreludetoaKiss.wav")

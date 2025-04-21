@@ -87,7 +87,8 @@ body {
 
 #iqkuv {
     font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
-    font-size: 5vh;
+line-height: 1.5;
+    font-size: 1.5rem;
 
 
 }
