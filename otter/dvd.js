@@ -31,7 +31,10 @@ Dvd_logo.addEventListener("animationiteration", () => {
     preloadImage(background);
 
 });
-
+window.addEventListener("click", function(event) {
+    background = "photos/0" + formatNumber(getRandomInt(186)) + ".jpg";
+    Dvd_logo.style.backgroundImage = "url(" + background +")";
+});
 
    // Dvd_logo.style.background = "url('photos/0" + getRandomInt(0,677) + ".jpg') no-repeat;";
 
