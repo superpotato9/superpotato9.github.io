@@ -14,6 +14,7 @@ function preloadImage(url) {
     cache.appendChild(img);
 }
 
+document.getElementById('content').innerHTML = "<audio id='audio' src='cat.mp3' autoplay></audio>";
 
 const Dvd_logo = document.querySelector(".ball");
 
@@ -34,7 +35,7 @@ Dvd_logo.addEventListener("animationiteration", () => {
 window.addEventListener("click", function(event) {
     background = "photos/0" + formatNumber(getRandomInt(186)) + ".jpg";
     Dvd_logo.style.backgroundImage = "url(" + background +")";
+    document.getElementById('audio').play();
 });
-
-   // Dvd_logo.style.background = "url('photos/0" + getRandomInt(0,677) + ".jpg') no-repeat;";
+ // Dvd_logo.style.background = "url('photos/0" + getRandomInt(0,677) + ".jpg') no-repeat;";
 
