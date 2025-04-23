@@ -3,7 +3,7 @@
 }
 
 :root {
-    --width:250px;
+    --width:40%;
     --height:calc(var(--width) / 2);
 }
 
@@ -50,4 +50,8 @@ body {
     100% {
         left: calc(100% - var(--width));
     }
+}
+
+@media (max-width: 480px) {
+
 }
