@@ -10,6 +10,7 @@ document.body.style.backgroundImage =  'url("photos/0' + formatNumber(getRandomI
 document.getElementById('content').innerHTML = "<div id=\"ex1\" class=\"container\">\n" +
     "    <div id=\"ex1-layer\" class=\"box\">\n" +
           ' <img id="otter-photo" src="https://picsum.photos/id/237/500/500"/>' +
+    '<p id="click">Click me</p>' +
     "    </div>\n" +
     "</div>"
 
@@ -46,7 +47,7 @@ document.getElementById('otter-photo').src = 'photos/0' + formatNumber(getRandom
 window.addEventListener("click", function(event) {
 
     document.getElementById('otter-photo').src = 'photos/0' + formatNumber(getRandomInt(186)) + '.jpg';
-
+    document.getElementById('click').style.display = 'none';
 
 });
 

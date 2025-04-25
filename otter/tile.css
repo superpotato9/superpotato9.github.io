@@ -11,6 +11,7 @@ html{
     justify-content: center;
 }
 
+
 #particles-js {
     z-index: -1;
     position: fixed;
@@ -62,4 +63,11 @@ img{
     pointer-events: painted;
 }
 
+#click{
+    color: white;
+    font-size: 30px;
+   text-align: center;
+    font-family: Avenir;
+    vertical-align: center  ;
+}
 
