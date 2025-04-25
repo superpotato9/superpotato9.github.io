@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025.
+ */
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }

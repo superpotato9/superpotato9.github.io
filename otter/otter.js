@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025.
+ */
+
 function dvd() {
     const css = document.createElement('link');
     css.rel = 'stylesheet';

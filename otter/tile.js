@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025.
+ */
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }//185
@@ -27,7 +31,7 @@ function transforms(x, y, el) {
     return "perspective(100px) "
         + "   rotateX("+ calcX +"deg) "
         + "   rotateY("+ calcY +"deg) ";
-};
+}
 
 function transformElement(el, xyEl) {
     el.style.transform  = transforms.apply(null, xyEl);
@@ -54,4 +58,5 @@ window.addEventListener("click", function(event) {
 particlesJS.load('particles-js', 'particles-config.json', function() {
     console.log('particles.js loaded - callback');
 });
+
 

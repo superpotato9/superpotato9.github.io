@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025.
+ */
+
 anychart.onDocumentReady(function() {
     // adding data
     let data1 = [

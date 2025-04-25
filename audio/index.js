@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025.
+ */
+
 function audio_player(count, src) {
     const audioPlayer = document.querySelector(".audio-player" + count);
     const audio = new Audio(src);

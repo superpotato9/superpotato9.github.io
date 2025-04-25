@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025.
+ */
+
 let constrain = 40;
 let mouseOverContainer = document.getElementById("ex1");
 let ex1Layer = document.getElementById("ex1-layer");
@@ -10,7 +14,7 @@ function transforms(x, y, el) {
     return "perspective(100px) "
         + "   rotateX("+ calcX +"deg) "
         + "   rotateY("+ calcY +"deg) ";
-};
+}
 
 function transformElement(el, xyEl) {
     el.style.transform  = transforms.apply(null, xyEl);

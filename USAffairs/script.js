@@ -1,5 +1,9 @@
 
 
+/*
+ * Copyright (c) 2025.
+ */
+
 const popupOverlay = document.getElementById('popupOverlay');
 
 const popup = document.getElementById('popup');
