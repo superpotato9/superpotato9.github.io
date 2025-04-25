@@ -1,6 +1,65 @@
 html{
 
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
+
+
 }
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#particles-js {
+    z-index: -1;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background: linear-gradient(to bottom, #001b2c, #00141a);
+}
+body {
+    z-index: -1;
+    margin: 0;
+    overflow: hidden;
+
+}
+@font-face {
+    font-family: Domyouji;
+    src: url("Domyouji.ttf") format("truetype");
+
+}
+@font-face {
+
+
+    font-family: Advert MF;
+    src: url("Advert MF.ttf") format("truetype");
+    font-weight: 1 1000;
+}
+.box {
+
+    height: 300px;
+    width: 500px;
+
+}
+#otter-photo{
+
+    animation-fill-mode: forwards;
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1);
+}
+#otter-photo:hover{
+
+
+    transform: scale(1.3);
+
+}
+img{
+    pointer-events: painted;
+}
+
+

@@ -22,4 +22,16 @@ function tile() {
     css.href = 'tile.css';
     document.head.appendChild(css);
 }
-dvd();
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+let site = getRandomInt(2)
+console.log(site);
+if (site === 0){
+    dvd();
+}
+if (site === 1){
+    tile();
+}
+
