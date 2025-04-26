@@ -74,8 +74,8 @@ function near_mouse(buttons_list){
        //if(x_distance > min){
 
        //}
-       let new_x = (getRandomInt(mouseX ) * Math.sign(mouseX)*  -1 ) + (screen_width/2);
-       let new_y = (getRandomInt(mouseY) *  Math.sign(mouseY)*  -1 ) + (screen_height/2);
+       let new_x = (getRandomInt(mouseX ) * -1 ) + (screen_width/2);
+       let new_y = (getRandomInt(mouseY) *   -1 ) + (screen_height/2);
         console.log(new_x, new_y);
        if (new_x > screen_width|| Math.sign(new_x) == -1){
            new_x = getRandomInt(screen_width);
