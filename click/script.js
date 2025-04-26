@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2025.
  */
-let min = 30; //min distance they start moiving
+let min = 100; //min distance they start moiving
 let jump_distance = 100;
 let old_mouse_state = []
 const time = 0;
@@ -78,6 +78,7 @@ function near_mouse(buttons_list){
        let new_x = (getRandomInt(mouseX ) * -1 ) + (screen_width/2);
        let new_y = (getRandomInt(mouseY) *   -1 ) + (screen_height/2);
         console.log(new_x, new_y);
+
        if (new_x > screen_width|| Math.sign(new_x) == -1){
            new_x = getRandomInt(screen_width);
            console.log('overflow width');
@@ -89,8 +90,8 @@ function near_mouse(buttons_list){
 
         }
 
-
-       if(x_distance <= min  ){
+        let distance = Math.sqrt(x_distance * x_distance + y_distance * y_distance);
+       if(distance <= min  ){
            console.log('close');
 
            //document.getElementById(buttons_list[i]).innerText = "close";
@@ -100,16 +101,7 @@ function near_mouse(buttons_list){
            button.style.left = new_x + 'px';
            button.style.top = new_y + 'px';
        }
-        else if(y_distance <= min ){
-            console.log('close y ');
-           let button = document.getElementById(buttons_list[i]);
-           button.style.transition = "left 2s linear, top 1s linear   ";
 
-           button.style.left = new_x + 'px';
-           button.style.top = new_y + 'px';
-
-
-       }
 
 
     }
