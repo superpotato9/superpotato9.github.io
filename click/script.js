@@ -61,13 +61,14 @@ let close = [];
 function near_mouse(buttons_list){
     //returns list of items close to mouse
 
-    if(old_mouse_state.length > 0 || old_mouse_state[0]/mouseX >.2 || old_mouse_state[1]/mouseY >.2  ){
+  //  if (old_mouse_state.length === 0 || Math.abs(old_mouse_state[0] - mouseX) > 5 || Math.abs(old_mouse_state[1] - mouseY) > 5)
+        //{
     for (let i = 0; i !== buttons_list.length; i++) {
 
 
        button_xy = getPoint(buttons_list[i]);
-       x_distance = Math.abs( button_xy[0] - mouseX);
-       y_distance =  Math.abs(  button_xy[1] - mouseY);
+       x_distance = Math.abs( button_xy[1] - mouseX);
+       y_distance =  Math.abs(  button_xy[0] - mouseY);
 
        console.log(y_distance, x_distance);
 
@@ -112,7 +113,7 @@ function near_mouse(buttons_list){
 
 
     }
-    }
+   // }
 
     old_mouse_state = [mouseX, mouseY];
 
