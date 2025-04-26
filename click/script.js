@@ -4,6 +4,7 @@
 let min = 100; //min distance they start moiving
 let jump_distance = 100;
 let old_mouse_state = []
+let sound_effect = new Audio("pop.wav");
 const time = 0;
 let i = 0;
 function getRandomInt(max) {
@@ -49,6 +50,7 @@ function new_button(id){
     i++;
     console.log(buttons);
     jump_distance += 5;
+    sound_effect.play();
 
 }
 
