@@ -70,7 +70,7 @@ function intersectByName(arr1, arr2) {
 
 async function get_caffeine(state) {
     console.log(state);
-    const request = await fetch ("http://localhost:8000/caffeine/" + state);
+    const request = await fetch ("https://tea.nathank.page/caffeine/" + state);
 
 
 
@@ -82,7 +82,7 @@ async function get_caffeine(state) {
 
 async function Search(param, value, state) {
     const response = await fetch(
-        `http://localhost:8000/search/${encodeURIComponent(param)}?term=${encodeURIComponent(value)}`
+        `https://tea.nathank.page/search/${encodeURIComponent(param)}?term=${encodeURIComponent(value)}`
     )
 
     return normalizeResults(await response.json());
